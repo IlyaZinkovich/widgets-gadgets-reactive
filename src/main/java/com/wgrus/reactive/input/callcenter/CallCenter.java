@@ -29,6 +29,7 @@ public class CallCenter {
                 .map(customer ->
                         new CallCenterInputOrder(customer.getCustomerId(), customer.chooseCatalogItems(catalogs)))
                 .forEach(subscriber::onNext);
+        subscriber.onCompleted();
     }
 
     private String generateCustomerId() {

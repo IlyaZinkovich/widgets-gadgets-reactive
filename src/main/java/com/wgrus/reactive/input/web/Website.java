@@ -29,6 +29,7 @@ public class Website {
                 .map(customer ->
                         new WebsiteInputOrder(customer.getCustomerId(), customer.chooseCatalogItems(catalogs)))
                 .forEach(subscriber::onNext);
+        subscriber.onCompleted();
     }
 
     private String generateCustomerId() {

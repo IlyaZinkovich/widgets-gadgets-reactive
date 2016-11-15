@@ -2,6 +2,7 @@ package com.wgrus.reactive.system;
 
 import java.util.List;
 
+import static com.wgrus.reactive.system.Order.Status.IN_PROGRESS;
 import static java.util.Collections.unmodifiableList;
 
 public class Order {
@@ -9,6 +10,11 @@ public class Order {
     private String orderId;
     private String customerId;
     private List<OrderItem> orderItems;
+    private Status status;
+
+    public enum Status {
+        IN_PROGRESS, REJECTED, ACCEPTED
+    }
 
     public Order() {
     }
@@ -17,6 +23,7 @@ public class Order {
         this.orderId = orderId;
         this.customerId = customerId;
         this.orderItems = orderItems;
+        this.status = IN_PROGRESS;
     }
 
     public String getOrderId() {
