@@ -11,8 +11,4 @@ public abstract class InventoryItem {
     public String getModelNumber() {
         return modelNumber;
     }
-
-    public void setModelNumber(String modelNumber) {
-        this.modelNumber = modelNumber;
-    }
 }

@@ -2,6 +2,8 @@ package com.wgrus.reactive.system;
 
 import java.util.List;
 
+import static java.util.Collections.unmodifiableList;
+
 public class Order {
 
     private String orderId;
@@ -21,24 +23,12 @@ public class Order {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
     public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
-
     public List<OrderItem> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
+        return unmodifiableList(orderItems);
     }
 
     @Override

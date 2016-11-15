@@ -11,12 +11,13 @@ public abstract class InputOrder {
     protected String customerId;
     protected List<CatalogItem> orderedItems;
 
-    public String getCustomerId() {
-        return customerId;
+    public InputOrder(String customerId, List<CatalogItem> catalogItems) {
+        this.customerId = customerId;
+        this.orderedItems = catalogItems;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public String getCustomerId() {
+        return customerId;
     }
 
     public List<CatalogItem> getOrderedItems() {

@@ -24,7 +24,7 @@ public class CallCenter {
     }
 
     private void publishOrder(Subscriber<? super CallCenterInputOrder> subscriber) {
-        IntStream.range(1, 10001)
+        IntStream.range(1, 21)
                 .mapToObj(i -> new Customer(generateCustomerId()))
                 .map(customer ->
                         new CallCenterInputOrder(customer.getCustomerId(), customer.chooseCatalogItems(catalogs)))

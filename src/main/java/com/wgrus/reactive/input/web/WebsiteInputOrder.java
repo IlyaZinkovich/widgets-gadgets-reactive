@@ -8,8 +8,7 @@ import java.util.List;
 public class WebsiteInputOrder extends InputOrder {
 
     public WebsiteInputOrder(String customerId, List<CatalogItem> catalogItems) {
-        this.customerId = customerId;
-        this.orderedItems = catalogItems;
+        super(customerId, catalogItems);
     }
 
     @Override
