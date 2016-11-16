@@ -6,10 +6,11 @@ import java.util.stream.IntStream;
 
 import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.toList;
+import static rx.Observable.from;
 
 public class GadgetCatalog extends Catalog {
 
     public GadgetCatalog() {
-        this.items = IntStream.range(1, 10).mapToObj(i -> new GadgetCatalogItem(valueOf(i))).collect(toList());
+        super(from(IntStream.range(1, 10).mapToObj(i -> new GadgetCatalogItem(valueOf(i))).collect(toList())));
     }
 }

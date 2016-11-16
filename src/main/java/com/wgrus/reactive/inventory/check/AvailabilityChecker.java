@@ -1,35 +1,19 @@
 package com.wgrus.reactive.inventory.check;
 
+import com.wgrus.reactive.orders.received.ReceivedOrderItem;
+import com.wgrus.reactive.catalog.CatalogItem;
 import com.wgrus.reactive.inventory.gadget.GadgetInventory;
 import com.wgrus.reactive.inventory.widget.WidgetInventory;
-import com.wgrus.reactive.system.OrderItem.Type;
-import rx.Observable;
-import rx.Subscriber;
-import rx.observables.GroupedObservable;
-
-import static com.wgrus.reactive.system.OrderItem.Type.GADGET;
-import static com.wgrus.reactive.system.OrderItem.Type.WIDGET;
 
 public class AvailabilityChecker {
 
-    public Observable<CheckInventoryItem> getAvailableOrders(GroupedObservable<Type, CheckInventoryItem> groupedItems,
-                                                             WidgetInventory widgetInventory,
-                                                             GadgetInventory gadgetInventory) {
-        return Observable.create(subscriber ->
-                getAvailableOrderItems(subscriber, groupedItems, widgetInventory, gadgetInventory));
-    }
-
-    private void getAvailableOrderItems(Subscriber<? super CheckInventoryItem> subscriber,
-                                        GroupedObservable<Type, CheckInventoryItem> groupedItems,
-                                        WidgetInventory widgetInventory, GadgetInventory gadgetInventory) {
-        if (WIDGET.equals(groupedItems.getKey())) {
-            groupedItems.filter(order -> widgetInventory.isAvailable(order.getOrderItem().getModelNumber()))
-                    .subscribe(subscriber::onNext);
+    public CheckedInventoryOrderItem getCheckItemAvailability(WidgetInventory widgetInventory, GadgetInventory gadgetInventory, ReceivedOrderItem receivedOrderItem) {
+        if (CatalogItem.Type.WIDGET.equals(receivedOrderItem.getType())) {
+            return new CheckedInventoryOrderItem(receivedOrderItem, widgetInventory.isAvailable(receivedOrderItem.getModelNumber()));
         }
-        if (GADGET.equals(groupedItems.getKey())) {
-            groupedItems.filter(order -> gadgetInventory.isAvailable(order.getOrderItem().getModelNumber()))
-                    .subscribe(subscriber::onNext);
+        if (CatalogItem.Type.GADGET.equals(receivedOrderItem.getType())) {
+            return new CheckedInventoryOrderItem(receivedOrderItem, gadgetInventory.isAvailable(receivedOrderItem.getModelNumber()));
         }
-        subscriber.onCompleted();
+        throw new RuntimeException("Unsupported item type");
     }
 }

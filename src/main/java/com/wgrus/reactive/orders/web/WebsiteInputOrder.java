@@ -1,13 +1,12 @@
-package com.wgrus.reactive.input.web;
+package com.wgrus.reactive.orders.web;
 
 import com.wgrus.reactive.catalog.CatalogItem;
-import com.wgrus.reactive.input.InputOrder;
-
-import java.util.List;
+import com.wgrus.reactive.orders.InputOrder;
+import rx.Observable;
 
 public class WebsiteInputOrder extends InputOrder {
 
-    public WebsiteInputOrder(String customerId, List<CatalogItem> catalogItems) {
+    public WebsiteInputOrder(String customerId, Observable<CatalogItem> catalogItems) {
         super(customerId, catalogItems);
     }
 

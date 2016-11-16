@@ -1,33 +1,32 @@
-package com.wgrus.reactive.input.callcenter;
+package com.wgrus.reactive.orders.web;
 
 import com.wgrus.reactive.catalog.Catalog;
-import com.wgrus.reactive.input.Customer;
+import com.wgrus.reactive.orders.Customer;
 import rx.Observable;
 import rx.Subscriber;
 
-import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
 import static java.lang.String.valueOf;
 
-public class CallCenter {
+public class Website {
 
-    private List<Catalog> catalogs;
+    private Observable<Catalog> catalogs;
 
-    public CallCenter(List<Catalog> catalogs) {
+    public Website(Observable<Catalog> catalogs) {
         this.catalogs = catalogs;
     }
 
-    public Observable<CallCenterInputOrder> getOrders() {
+    public Observable<WebsiteInputOrder> getOrders() {
         return Observable.create(subscriber -> publishOrder(subscriber));
     }
 
-    private void publishOrder(Subscriber<? super CallCenterInputOrder> subscriber) {
+    private void publishOrder(Subscriber<? super WebsiteInputOrder> subscriber) {
         IntStream.range(1, 21)
                 .mapToObj(i -> new Customer(generateCustomerId()))
                 .map(customer ->
-                        new CallCenterInputOrder(customer.getCustomerId(), customer.chooseCatalogItems(catalogs)))
+                        new WebsiteInputOrder(customer.getCustomerId(), customer.chooseCatalogItems(catalogs)))
                 .forEach(subscriber::onNext);
         subscriber.onCompleted();
     }

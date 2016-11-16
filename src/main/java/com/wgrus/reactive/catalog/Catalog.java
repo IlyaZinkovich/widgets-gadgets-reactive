@@ -1,14 +1,16 @@
 package com.wgrus.reactive.catalog;
 
-import java.util.List;
-
-import static java.util.Collections.unmodifiableList;
+import rx.Observable;
 
 public abstract class Catalog {
 
-    protected List<CatalogItem> items;
+    protected Observable<CatalogItem> items;
 
-    public List<CatalogItem> getItems() {
-        return unmodifiableList(items);
+    public Catalog(Observable<CatalogItem> items) {
+        this.items = items;
+    }
+
+    public Observable<CatalogItem> getItems() {
+        return items;
     }
 }
