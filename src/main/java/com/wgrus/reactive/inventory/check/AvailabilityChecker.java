@@ -7,7 +7,9 @@ import com.wgrus.reactive.inventory.widget.WidgetInventory;
 
 public class AvailabilityChecker {
 
-    public CheckedInventoryOrderItem getCheckItemAvailability(WidgetInventory widgetInventory, GadgetInventory gadgetInventory, ReceivedOrderItem receivedOrderItem) {
+    public CheckedInventoryOrderItem getCheckItemAvailability(WidgetInventory widgetInventory,
+                                                              GadgetInventory gadgetInventory,
+                                                              ReceivedOrderItem receivedOrderItem) {
         if (CatalogItem.Type.WIDGET.equals(receivedOrderItem.getType())) {
             return new CheckedInventoryOrderItem(receivedOrderItem, widgetInventory.isAvailable(receivedOrderItem.getModelNumber()));
         }

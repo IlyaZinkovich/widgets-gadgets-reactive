@@ -17,6 +17,7 @@ public class GadgetInventory {
     }
 
     public boolean isAvailable(String gadgetModel) {
-        return this.availableGadgets.stream().anyMatch(gadget -> gadget.getModelNumber().equals(gadgetModel));
+        return this.availableGadgets.stream()
+                .anyMatch(gadget -> gadget.getModelNumber().equals(gadgetModel));
     }
 }

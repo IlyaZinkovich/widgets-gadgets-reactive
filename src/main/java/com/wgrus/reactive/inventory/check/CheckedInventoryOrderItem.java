@@ -7,8 +7,7 @@ public class CheckedInventoryOrderItem extends ReceivedOrderItem {
     private Boolean available;
 
     public CheckedInventoryOrderItem(ReceivedOrderItem receivedOrderItem, boolean available) {
-        super(receivedOrderItem.getOrderId(), receivedOrderItem.getCustomerId(),
-                receivedOrderItem.getType(), receivedOrderItem.getModelNumber());
+        super(receivedOrderItem.getOrderId(), receivedOrderItem.getType(), receivedOrderItem.getModelNumber());
         this.available = available;
     }
 
@@ -18,9 +17,6 @@ public class CheckedInventoryOrderItem extends ReceivedOrderItem {
 
     @Override
     public String toString() {
-        return "CheckedInventoryOrderItem{" +
-                super.toString() + ", " +
-                "available=" + available +
-                '}';
+        return getType() + " " + getModelNumber();
     }
 }

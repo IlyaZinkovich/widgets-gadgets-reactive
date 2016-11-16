@@ -32,6 +32,6 @@ public class Website {
     }
 
     private String generateCustomerId() {
-        return valueOf(new Random().nextInt(100));
+        return valueOf(new Random().nextInt(99) + 1);
     }
 }

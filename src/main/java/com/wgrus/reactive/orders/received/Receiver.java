@@ -7,9 +7,9 @@ import static java.lang.String.valueOf;
 
 public class Receiver {
 
-    private static Long orderId = 1L;
+    private static Long orderCounter = 0L;
 
     public ReceivedOrder receiveOrder(String customerId, Observable<CatalogItem> orderedItems) {
-        return new ReceivedOrder(valueOf(orderId++), customerId, orderedItems);
+        return new ReceivedOrder(valueOf(++orderCounter), customerId, orderedItems);
     }
 }

@@ -17,6 +17,7 @@ public class WidgetInventory {
     }
 
     public boolean isAvailable(String widgetModel) {
-        return this.availableWidgets.stream().anyMatch(widget -> widget.getModelNumber().equals(widgetModel));
+        return this.availableWidgets.stream()
+                .anyMatch(widget -> widget.getModelNumber().equals(widgetModel));
     }
 }
