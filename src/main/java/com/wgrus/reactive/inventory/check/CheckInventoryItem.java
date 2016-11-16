@@ -1,13 +1,13 @@
-package com.wgrus.reactive;
+package com.wgrus.reactive.inventory.check;
 
 import com.wgrus.reactive.system.OrderItem;
 
-public class CheckInventoryOrderItem {
+public class CheckInventoryItem {
 
     private String orderId;
     private OrderItem orderItem;
 
-    public CheckInventoryOrderItem(String orderId, OrderItem orderItem) {
+    public CheckInventoryItem(String orderId, OrderItem orderItem) {
         this.orderId = orderId;
         this.orderItem = orderItem;
     }
@@ -22,7 +22,7 @@ public class CheckInventoryOrderItem {
 
     @Override
     public String toString() {
-        return "CheckInventoryOrderItem{" +
+        return "CheckInventoryItem{" +
                 "orderId='" + orderId + '\'' +
                 ", orderItem=" + orderItem +
                 '}';

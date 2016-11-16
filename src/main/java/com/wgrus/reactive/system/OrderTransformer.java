@@ -4,6 +4,7 @@ import com.wgrus.reactive.input.InputOrder;
 
 import java.util.List;
 
+import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.toList;
 
 public class OrderTransformer {
@@ -14,7 +15,7 @@ public class OrderTransformer {
         List<OrderItem> transformedOrderItems = inputOrder.getOrderedItems().stream()
                 .map(inputOrderItem -> new OrderItem(inputOrderItem.getModelNumber(), orderType))
                 .collect(toList());
-        return new Order(String.valueOf(orderIdCounter++), inputOrder.getCustomerId(),
+        return new Order(valueOf(orderIdCounter++), inputOrder.getCustomerId(),
                 transformedOrderItems);
     }
 }
